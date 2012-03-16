@@ -2,6 +2,9 @@
 class Integer
 
 def prime?
+    if self == 2
+        return true
+    end
     ( 2..(Math.sqrt(self).ceil)).each do |itr|
         if self % itr == 0
             return false
@@ -12,8 +15,4 @@ end
 
 end
 
-sum = 2
-(3..2_000_000).each do |i|
-    sum += i if i.prime? 
-end
-puts sum
+puts (2..2_000_000).inject{ |sum, i| i.prime? ? sum + i : sum }
